@@ -48,14 +48,13 @@ exports.createOne = async (req, res) => {
     } else {
       //if user already exist
       //and rated by someone
+
       let { obj_uid } = userData;
 
       console.log("objb_uid --> ", obj_uid);
       // ahiya thi tane index madse
       const index = obj_uid.findIndex((data) => {
-        return (
-          data.by_uid === req.body.obj_uid && data.ratings !== req.body.ratings
-        );
+        return data.by_uid === req.body.obj_uid;
       });
       //console.log(index);
 
@@ -101,7 +100,7 @@ exports.createOne = async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      message: "Your ratings are rated",
+      message: "Your ratings are updated",
     });
   } catch (err) {
     res.status(404).json({

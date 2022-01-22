@@ -13,6 +13,7 @@ const user_rating = new Schema({
       by_uid: {
         type: Number,
         required: true,
+        unique: true,
       },
       ratings: {
         type: Number,
